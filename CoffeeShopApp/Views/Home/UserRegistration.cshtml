@@ -1,0 +1,181 @@
+﻿
+
+
+
+    @{
+        ViewBag.Title = "UserRegistration";
+    }
+
+
+
+    <h2>UserRegistration</h2>
+    <h3> Welcome to Sunrise Cafe</h3>
+    @model CoffeeShopApp.Models.User
+
+    <form name="UserRegistration" id="UserRegistration" action="/Home/UserRegistration" method="post">
+        <script type="text/javascript">
+            function checkEmail() {
+                var word = document.getElementById("email").value;
+                if (/^\w+([\.-]?\ w+)*@@\w+([\.-]?\ w+)*(\.\w{2,3})+$/.test(word)) {
+                    return (true);
+                }
+                else {
+                    alert("You have entered an invalid email address!");
+                    return (false);
+                }
+
+            }
+
+            function phone() {
+                var word = document.getElementById("phoneNumber").value;
+               
+                if (word == "" || isNaN(word) || word.length > 11) {
+                    alert("You have entered an invalid Phone Number!");
+                    
+                   // document.getElementById("phoneNumber").focus();
+                    return (true);
+                }
+                else
+                    {return (false)}
+              
+
+            }
+        </script>
+
+    <div id="boxalign2" class="boxalign2">
+        <div class="inputwrap">
+            <label>First Name:</label>
+            <input class="rounded2" required title="FirstNam" name="Firstname" type="text" />
+        </div>
+    </div>
+
+    <br>
+    <div id="boxalign2" class="boxalign2">
+        <div class="inputwrap">
+            <label for="LastName">Last Name:</label>
+            <input class="rounded2" required title="lastName" name="lastName" type="text" />
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="Gender">Gender:</label>
+        <div class="radio-inline">
+            @Html.RadioButton("gender", "Male", true, new { id = "IsMale" }) Male
+        </div>
+        <div class="radio-inline">
+            @Html.RadioButton("gender", "Female", new { id = "IsFemale" }) Female
+        </div>
+    </div>
+    <br>
+
+        <div id="boxalign2" class="boxalign2">
+            <div class="inputwrap">
+                <label for="Email">Email:</label>
+                <input id="email" type="text" class="rounded2" name="Email" onblur="checkEmail();" required>
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number:</label>
+            <input type="text" class="form-control" id="phoneNumber" name="PhoneNumber"  onblur="phone();" maxlength="12" required>
+        </div>
+<br>
+    
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="passWord" name="Password" pattern="^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,20}$" title="Must be 8-20 characters long and contain at least one number" required>
+    </div>
+
+
+
+    
+        <fieldset>
+            <legend>Address info:</legend>
+            <div class="form-group">
+                <label for="Address1">Address1:</label>
+                <input id="Address1" type="Address1" class="form-control" name="Address2">
+            </div>
+
+            <div class="form-group">
+                <label for="Address2">Address1:</label>
+                <input id="Address2" type="Address2" class="form-control" name="Address2">
+            </div>
+
+
+            <br>
+            <div id="boxalign2" class="boxalign2">
+                <div class="inputwrap">
+                    <label class="col-xs-3 control-label">City</label>
+                    <div class="col-xs-5 selectContainer">
+                        <select class="form-control" name="City">
+                            <option value="black">Detroit</option>
+                            <option value="green">Troy</option>
+                            <option value="red">Lansing</option>
+                            <option value="yellow">Sterling Heights</option>
+                            <option value="white">Warren</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+
+
+            <br>
+            <div id="boxalign2" class="boxalign2">
+                <div class="inputwrap">
+                    <label class="col-xs-3 control-label">State</label>
+                    <div class="col-xs-5 selectContainer">
+                        <select class="form-control" name="State">
+                            <option value="black">Michigan</option>
+                            <option value="green">Ohio</option>
+                            <option value="red">Chicago</option>
+                            <option value="yellow">Newyork</option>
+                            <option value="white">Tenesse</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+
+            <br>
+            <div id="boxalign2" class="boxalign2">
+                <div class="inputwrap">
+                    <label class="col-xs-3 control-label">Country</label>
+                    <div class="col-xs-5 selectContainer">
+                        <select class="form-control" name="Country">
+                            <option value="">Country </option>
+                            <option value="black">USA</option>
+                            <option value="green">Canada</option>
+                            <option value="red">India</option>
+                            <option value="yellow">Australia</option>
+                            <option value="white">Germany</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+
+<br >
+        <div class="form-group">
+            <div class="checkbox-inline">
+                <label>
+                    @Html.CheckBox("IsJazz") Please check the box accepting to terms and conditions.
+                </label>
+            </div>
+        </div>
+        <br />
+
+
+            <button type="submit" class="btn btn-primary" >Register</button>
+
+
+</form>
+
+
+
